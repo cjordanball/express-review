@@ -4,14 +4,16 @@ import express from 'express';
 // Create express app
 const app = express();
 
-// this funcion is a middleware that will be executed for every request to the app
-// next is a function that will be called when the middleware is complete
-app.use((req, res, next) => {
-	console.log('In the middleware!');
-	next();
+// we want to put longer routes first, because express will check from top to bottom
+// and if we put '/' first, it will match all the routes
+app.use('/dogs', (req, res, next) => {
+	console.log('In the second middleware!');
+	res.send(`
+		<h1>Woof! from Express!</h1>
+	`);
 });
 
-app.use((req, res, next) => {
+app.use('/', (req, res, next) => {
 	console.log('In the second middleware!');
 	res.send(`
 		<h1>Hello from Express!</h1>
