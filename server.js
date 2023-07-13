@@ -1,6 +1,8 @@
 import http from 'http';
 import express from 'express';
 import bodyParser from 'body-parser';
+import { router as shopRoutes } from './routes/shop';
+import { router as adminRoutes } from './routes/admin';
 
 // Create express app
 const app = express();
@@ -12,18 +14,7 @@ const app = express();
 // extended: true allows us to parse extended bodies with rich data in it
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use('/add-product', (req, res, next) => {
-	console.log('In the second middleware!');
-	res.send(`
-		<form action="\product" method="POST"><input type="text" name="title"><button type="submit">Add Product</button></form>
-	`);
-});
-
-app.post('/product', (req, res, next) => {
-	// this middleware will only trigger for POST request
-	console.log(req.body);
-	res.redirect('/');
-});
+app.use(adminRoutes);
 
 app.use('/', (req, res, next) => {
 	console.log('In the second middleware!');

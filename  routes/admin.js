@@ -1,0 +1,16 @@
+import express from 'express';
+
+export const router = express.Router();
+
+router.get('/add-product', (req, res, next) => {
+	console.log('In the second middleware!');
+	res.send(`
+		<form action="\product" method="POST"><input type="text" name="title"><button type="submit">Add Product</button></form>
+	`);
+});
+
+router.post('/product', (req, res, next) => {
+	// this middleware will only trigger for POST request
+	console.log(req.body);
+	res.redirect('/');
+});
