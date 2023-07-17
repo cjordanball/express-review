@@ -1,0 +1,27 @@
+extends layouts/main-layout.pug
+
+block title 
+	title Shop
+
+block styles
+	link(rel="stylesheet", href="/css/product.css")
+
+block content
+	main 
+		//- we can use simple conditional syntax to determine what to display, don't forget indents! 
+		if products.length > 0
+			//- without anything, it is assumed to be a div 
+			.grid 
+				//- the following line is the syntax for handling an array of items to list 
+				each item in products
+					//- multiple classes are connected by dots 
+					article.card.product-item
+					header.card__header 
+						h1.product__title #{item.title}
+					.card__image 
+						img(src="https://foundforthehome.com/cdn/shop/products/ec5367e2c4efd01c8184f4263ec6c7a4.png?v=1612336125", alt='the product')
+					.card__content 
+						h2.product__price #{item.price}
+						p.product__description #{item.description}
+					.card__actions 
+						button.btn Add to Cart
