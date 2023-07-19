@@ -1,26 +1,11 @@
-import express from 'express';
 import path from 'path';
-import { getDirname } from '../utilities/navUtilties.js';
+import express from 'express';
+import { getAddProduct, postAddProduct } from '../controllers/products.js';
 
-const __dirname = getDirname(import.meta.url);
+const router = express.Router();
 
-export const router = express.Router();
+router.get('/add-product', getAddProduct);
 
-export const products = [];
+router.post('/add-product', postAddProduct);
 
-router.get('/add-product', (req, res, next) => {
-	res.render('add-product', {
-		products: products,
-		title: 'Please Add Product',
-		perth: 'topper',
-		formsCSS: true,
-		activeAddProduct: true,
-	});
-});
-
-router.post('/add-product', (req, res, next) => {
-	// this middleware will only trigger for POST request
-	products.push(req.body);
-	console.log(req.body.title);
-	res.status(302).redirect('/');
-});
+export { router };
