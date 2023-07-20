@@ -4,6 +4,7 @@ import {
 	getAddProduct,
 	postAddProduct,
 	getProducts,
+	editProduct,
 } from '../controllers/admin.js';
 
 const router = express.Router();
@@ -16,5 +17,7 @@ router.post('/add-product', postAddProduct);
 
 // /admin/products and GET
 router.get('/products', getProducts);
+
+router.get('/edit-product', editProduct);
 
 export { router };

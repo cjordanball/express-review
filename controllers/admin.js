@@ -30,3 +30,10 @@ export const getProducts = (req, res, next) => {
 		});
 	});
 };
+
+export const editProduct = (req, res, next) => {
+	res.render('admin/edit-product', {
+		title: 'Edit Me',
+		path: '/admin/edit-product',
+	});
+};
