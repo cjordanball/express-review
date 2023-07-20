@@ -1,1 +1,15 @@
-[{"title":"Toast"},{"title":"Hamburger"},{"title":"Fries"},{"title":"Happy"},{"title":"Tesla"},{"title":"Tesla"},{"title":"Torque"},{"title":"Torque"},{"title":"CJB"}]
+[
+	{ "title": "Toast" },
+	{ "title": "Hamburger" },
+	{ "title": "Fries" },
+	{ "title": "Happy" },
+	{ "title": "Tesla" },
+	{ "title": "Torque" },
+	{ "title": "CJB" },
+	{
+		"title": "Toaster",
+		"imageURL": "https://cb.scene7.com/is/image/Crate/Zwilling2SlcTstrSSF20_VND/$web_pdp_carousel_med$/200917155243/zwilling-2-slice-toaster.jpg",
+		"description": "Beautiful Toaster",
+		"price": "19.99"
+	}
+]
