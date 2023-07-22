@@ -1,4 +1,6 @@
+// import { json } from 'body-parser';
 import { Product } from '../models/product.js';
+// import bodyParser from 'body-parser';
 
 export const getProducts = (req, res, next) => {
 	Product.fetchAll((products) => {
@@ -31,8 +33,13 @@ export const getIndex = (req, res, next) => {
 	});
 };
 
+export const postCart = (req, res, next) => {
+	const prodId = req.body.productId;
+	console.log('prodId: ', prodId);
+	res.redirect('/cart');
+};
+
 export const getCart = (req, res, next) => {
-	console.log('getCart!');
 	res.render('shop/cart', {
 		path: '/cart',
 		title: 'Your Cart',

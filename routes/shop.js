@@ -4,6 +4,7 @@ import {
 	getIndex,
 	getCheckout,
 	getCart,
+	postCart,
 	getOrders,
 	getProduct,
 } from '../controllers/shop.js';
@@ -19,5 +20,7 @@ router.get('/products/:productId', getProduct);
 router.get('/orders', getOrders);
 
 router.get('/cart', getCart);
+
+router.post('/cart', postCart);
 
 router.get('/checkout', getCheckout);
