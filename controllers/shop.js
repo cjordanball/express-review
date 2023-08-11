@@ -1,6 +1,5 @@
-// import { json } from 'body-parser';
+import { Cart } from '../models/cart.js';
 import { Product } from '../models/product.js';
-// import bodyParser from 'body-parser';
 
 export const getProducts = (req, res, next) => {
 	Product.fetchAll((products) => {
@@ -35,7 +34,9 @@ export const getIndex = (req, res, next) => {
 
 export const postCart = (req, res, next) => {
 	const prodId = req.body.productId;
-	console.log('prodId: ', prodId);
+	Product.findById(prodId, (product) => {
+		Cart.addProduct(prodId, product.price);
+	});
 	res.redirect('/cart');
 };
 
