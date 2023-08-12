@@ -54,9 +54,10 @@ export class Cart {
 				fileContent.toString('utf-8')
 			);
 			const hotProduct = products.find((prod) => prod.id === id);
-			console.log('HP: ', productPrice, hotProduct.qty);
+			if (!hotProduct) {
+				return;
+			}
 			const hotProductCost = productPrice * hotProduct.qty;
-			console.log('hPC', hotProductCost);
 
 			const updatedTotalPrice = totalPrice - hotProductCost;
 			const updatedProducts = products.filter(
@@ -71,6 +72,18 @@ export class Cart {
 			fs.writeFile(p, JSON.stringify(newCart), (err) => {
 				console.log('ERR: ', err);
 			});
+		});
+	}
+
+	static getCart(cb) {
+		fs.readFile(p, (err, fileContent) => {
+			const cart = JSON.parse(fileContent);
+			if (err) {
+				cb(null);
+			} else {
+				console.log('cart: ', cart);
+				cb(cart);
+			}
 		});
 	}
 }
