@@ -6,12 +6,22 @@ import bodyParser from 'body-parser';
 import { router as shopRoutes } from './routes/shop.js';
 import { router as adminRoutes } from './routes/admin.js';
 import { get404 } from './controllers/errors.js';
+import { pool } from './utilities/database.js';
 
 // Create express app
 const app = express();
 
 app.set('view engine', 'ejs');
 app.set('views', 'views');
+
+pool
+	.query('SELECT * FROM products')
+	.then((result) => {
+		console.log('RESULT: ', result.rows);
+	})
+	.catch((err) => {
+		console.log('ERR: ', err);
+	});
 
 // this middleware will trigger for all incoming requests
 // it will parse the body of the request and add it to the request object
